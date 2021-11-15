@@ -75,16 +75,16 @@
                 {
                     if (User.IsInRole("teacher")|| User.IsInRole("Student"))
                     {
-                        @Html.ActionLink("Details", "Details", new { id = item.sid });
+                        @Html.ActionLink("Details |", "Details", new { id = item.sid });
                     }
                     if (User.IsInRole("teacher"))
                     {
-                        @Html.ActionLink("Edit", "Edit", new { id = item.sid });
+                        @Html.ActionLink("| Edit |", "Edit", new { id = item.sid });
                     }
 
                     if (User.IsInRole("teacher"))
                     {
-                        @Html.ActionLink("Delete", "Delete", new { id = item.sid });
+                        @Html.ActionLink("| Delete ", "Delete", new { id = item.sid });
                     }
                 }
 

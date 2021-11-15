@@ -1,6 +1,4 @@
-﻿@{
-    ViewBag.Title = "Album";
-}
+﻿@{ ViewBag.Title = "Album"; }
 
 <style>
     img {
@@ -46,6 +44,8 @@
     <button onclick="plusDivs(1)">&raquo;</button>
 
 </div>
+
+@Html.ActionLink("BACK TO MENU", "menu", "HomePage1")
 <script>
     var slideIndex = 1;
     showDivs(slideIndex);
@@ -65,6 +65,6 @@
         x[slideIndex - 1].style.display = "block";
     }
 </script>
-@Html.ActionLink("BACK TO MENU", "menu", "HomePage1");
+
 
 
