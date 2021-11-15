@@ -1,0 +1,97 @@
+﻿@model IEnumerable<StudManage1.Models.result>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @if (User.Identity.IsAuthenticated)
+    {
+      
+        if (User.IsInRole("teacher"))
+        {
+            @Html.ActionLink("Create New", "Create");
+        }
+
+        }
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.stuDetail.rollNo)*@
+            Roll Number
+        </th>
+        <th>
+           @* @Html.DisplayNameFor(model => model.m1)*@
+            English Marks
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.m2)*@
+            Math Marks
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.m3)*@
+            Science  Marks
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.total)*@
+            Total  Marks
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.grade)*@
+            Grade
+        </th>
+        
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.stuDetail.rollNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.m1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.m2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.m3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.grade)
+            </td>
+            
+            <td>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("teacher")|| User.IsInRole("Student"))
+                    {
+                        @Html.ActionLink("Details", "Details", new { id = item.sid });
+                    }
+                    if (User.IsInRole("teacher"))
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.sid });
+                    }
+
+                    if (User.IsInRole("teacher"))
+                    {
+                        @Html.ActionLink("Delete", "Delete", new { id = item.sid });
+                    }
+                }
+
+            </td>
+           
+        </tr>
+    }
+
+</table>
+@Html.ActionLink("BACK TO MENU", "menu2", "HomePage2")

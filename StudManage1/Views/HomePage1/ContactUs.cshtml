@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "ContactUs";
+}
+<style>
+    img.icon {
+        height: 20px;
+        width: 20px;
+    }
+
+    img.person {
+        width: 180px;
+        height: 250px;
+        border: 1px groove lightgray;
+    }
+
+    div.outer {
+        display: flex;
+    }
+</style>
+
+<h2>Contact Us</h2>
+<hr style="width:200px" class="w3-opacity">
+<div class="outer" id="contact">
+    <div class="inner">
+        <p><img class="icon" src="https://cdn0.iconfinder.com/data/icons/inficons-muticollection/123/location-mark-marker-512.png" /> Embassy Tech Village, Deverabeesanahalli, Bengaluru, Karnataka 560103</p>
+        <p><img class="icon" src="https://themoorebankhotel.com/wp-content/uploads/2018/03/phone-300x300.png" /> Phone: +91 8061326262</p>
+        <p><img class="icon" src="https://th.bing.com/th/id/R.985c2b8f6c001d4e91bb511677853e5c?rik=lI%2fnQE%2fFNMAyVw&riu=http%3a%2f%2fgetdrawings.com%2ffree-icon-bw%2femail-icon-transparent-1.png&ehk=AB0lQ7Qt2rhh2HhO37%2bbYpFMX%2bJBxSvQJvmD83%2fi8tg%3d&risl=&pid=ImgRaw&r=0" /> Email: mailme@kpmg.com</p>
+    </div><br>
+
+    <div style="margin:auto auto auto 350px; text-align:center;" class="inner">
+        <img class="person" src="https://th.bing.com/th/id/R.060d730f1874bbd1200cbfae76b04fdc?rik=Ade%2fjhHQOH83hA&riu=http%3a%2f%2fwww.rajnikantvscidjokes.in%2fwp-content%2fuploads%2f2015%2f05%2fAlexis_Glick_hi.jpg&ehk=YMz%2b7yoSJXKw700AGTx1dkxtE6uf%2fjc5yiwLT0KRkzk%3d&risl=&pid=ImgRaw&r=0" />
+        <p><strong>Jessica Taylor</strong></p>
+        <p> principal@kpmg.com</p>
+    </div>
+
+
+</div>
+@Html.ActionLink("BACK TO MENU", "menu", "HomePage1");

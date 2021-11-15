@@ -1,0 +1,36 @@
+﻿@model IEnumerable<StudManage1.Models.stuDetail>
+@using StudManage1.Models
+
+@{
+    ViewBag.Title = "stulist";
+}
+
+<h2>list</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+
+<ul>
+
+    @foreach (stuDetail stuDetail in Model)
+
+    {
+        <li>
+
+            @Html.ActionLink(stuDetail.name, "Studentdeet", "Placement", new { stid = stuDetail.sid }, null)
+
+        </li>
+    }
+</ul>
+
+<p>
+
+    @Html.ActionLink("Back to List", "Companies", "Placement")
+</p>
+
+

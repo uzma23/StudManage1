@@ -1,0 +1,92 @@
+﻿@model StudManage1.Models.result
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<div id="makepdf">
+    <h2>RESULTS </h2>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            ROLL NUMBER
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stuDetail.rollNo)
+        </dd>
+        <dt>
+            NAME
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stuDetail.name)
+        </dd>
+
+        <dt>
+            English
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.m1)
+        </dd>
+
+        <dt>
+            Math
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.m2)
+        </dd>
+
+        <dt>
+            Science
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.m3)
+        </dd>
+
+        <dt>
+            Total Marks
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total)
+        </dd>
+
+        <dt>
+            Grade Recieved
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.grade)
+        </dd>
+    </dl>
+</div>
+<button id="button">Download MarksCard</button>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.sid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<script>
+    var button = document.getElementById("button");
+    var makepdf = document.getElementById("makepdf");
+
+    button.addEventListener("click", function () {
+        var mywindow = window.open("", "PRINT",
+                "height=400,width=600");
+
+        mywindow.document.write(makepdf.innerHTML);
+
+        mywindow.document.close();
+        mywindow.focus();
+
+        mywindow.print();
+        mywindow.close();
+
+        return true;
+    });
+</script>

@@ -1,0 +1,86 @@
+﻿
+@{ ViewBag.Title = "Menu"; }
+
+<style>
+    div.w3-col {
+        display: flex;
+        padding: 25px;
+        text-align: center;
+    }
+
+    img {
+        width: 180px;
+        height: 200px
+    }
+
+    a.option {
+        border: 1px hidden gray;
+        /*border-style: groove;*/
+        margin: 20px;
+        transition: transform .2s;
+        /*background-color: lightgrey;*/
+    }
+
+    a:hover {
+        transform: scale(1.3);
+    }
+    #blink {
+        font-size: 30px;
+        font-weight: bold;
+        font-family: sans-serif;
+        color: #1c87c9;
+        transition: 0.01s;
+    }
+   
+</style>
+
+<h2>Menu</h2>
+
+
+<p id="blink" style="color:darkred; background-color:chartreuse">ADMISSIONS OPEN NOW!!!</p>
+
+
+<div class="w3-col l3 s6">
+    <a class="option" href="~/HomePage1/AboutUs">
+        <div class="w3-container">
+            <img src="https://cdn-icons-png.flaticon.com/512/15/15659.png">
+            <p><b>About  Us</b></p>
+        </div>
+    </a>
+    <a class="option" href="~/HomePage1/calendar">
+        <div class="w3-container">
+            <img src="https://thumbs.dreamstime.com/b/news-icon-vector-sign-symbol-isolated-white-background-news-logo-concept-news-icon-vector-isolated-white-background-133757525.jpg">
+            <p><b>CALENDER</b></p>
+        </div>
+    </a>
+    <a class="option" href="~/HomePage1/Album">
+        <div class="w3-container">
+            <img src="https://www.freeiconspng.com/uploads/photography-icon-png-0.png">
+            <p><b>Gallery</b></p>
+        </div>
+    </a>
+    <a class="option" href="~/Placement/Companies">
+        <div class="w3-container">
+            <img src="https://miro.medium.com/max/960/0*H5b3TYySaiSIO3Xn.png">
+            <p><b>PLACEMENT</b></p>
+        </div>
+    </a>
+    <a class="option" href="~/Signup/Login">
+        <div class="w3-container">
+            <img src="https://png.pngtree.com/png-vector/20191003/ourmid/pngtree-user-login-or-authenticate-icon-on-gray-background-flat-icon-ve-png-image_1786166.jpg">
+            <p><b>LOGIN</b></p>
+        </div>
+    </a>
+</div>
+
+
+<script type="text/javascript">
+      var blink = document.getElementById('blink');
+      setInterval(function() {
+        blink.style.opacity = (blink.style.opacity == 0 ? 1 : 0);
+      }, 1000);
+</script>
+
+
+
+

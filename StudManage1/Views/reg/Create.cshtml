@@ -1,0 +1,154 @@
+﻿@model StudManage1.Models.eduDetail
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Education Details</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>eduDetail</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <!--<div class="form-group">
+            @Html.LabelFor(model => model.id, "id", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.id, new { htmlAttributes = new { @class = "form-control" } })-->
+        @*@Html.DropDownList("id", null, htmlAttributes: new { @class = "form-control" })*@
+        <!--@Html.ValidationMessageFor(model => model.id, "", new { @class = "text-danger" })
+            </div>
+        </div>-->
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ten_percent,"10th Percentage", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ten_percent, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ten_percent, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ten_yop,"Year of Passing 10th", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ten_yop", new List<SelectListItem>
+      {
+          new SelectListItem{Text="2010",Value="2010",Selected=true },
+          new SelectListItem{Text="2011",Value="2011" },
+             new SelectListItem{Text="2012",Value="2012" },
+                new SelectListItem{Text="2013",Value="2013" },
+                   new SelectListItem{Text="2014",Value="2014" },
+                      new SelectListItem{Text="2015",Value="2015" },
+                         new SelectListItem{Text="2016",Value="2016" },
+                            new SelectListItem{Text="2017",Value="2017" },
+                            new SelectListItem{Text="2018",Value="2018" },
+                               new SelectListItem{Text="2019",Value="2019" },
+               new SelectListItem{Text="2020",Value="2020" }
+          })
+                @*@Html.EditorFor(model => model.ten_yop, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.ten_yop, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ten_inst,"10th Passing Institution ", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ten_inst, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ten_inst, "", new { @class = "text-danger" })
+                @Html.ActionLink("UPLOAD YOUR 10TH MARKSHEET", "Index1", "reg")
+                [Note:Your file name should be your rollno followed 10th standard]
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.twel_percent, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.twel_percent, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.twel_percent, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.twel_yop, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("twel_yop", new List<SelectListItem>
+      {
+          new SelectListItem{Text="2010",Value="2010",Selected=true },
+          new SelectListItem{Text="2011",Value="2011" },
+             new SelectListItem{Text="2012",Value="2012" },
+                new SelectListItem{Text="2013",Value="2013" },
+                   new SelectListItem{Text="2014",Value="2014" },
+                      new SelectListItem{Text="2015",Value="2015" },
+                         new SelectListItem{Text="2016",Value="2016" },
+                            new SelectListItem{Text="2017",Value="2017" },
+                            new SelectListItem{Text="2018",Value="2018" },
+                               new SelectListItem{Text="2019",Value="2019" },
+               new SelectListItem{Text="2020",Value="2020" }
+          })
+
+                @*@Html.EditorFor(model => model.twel_yop, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.twel_yop, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.twel_inst, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.twel_inst, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.twel_inst, "", new { @class = "text-danger" })
+                @Html.ActionLink("UPLOAD YOUR 12TH MARKSHEET", "Index2", "reg")
+                [Note:Your file name should be your rollno followed 12th standard]
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.curr_CGPA, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.curr_CGPA, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.curr_CGPA, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.curr_sem, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("curr_sem", new List<SelectListItem>
+     {
+         new SelectListItem{Text="1",Value="1",Selected=true },
+         new SelectListItem{Text="2",Value="2" },
+            new SelectListItem{Text="3",Value="3" },
+               new SelectListItem{Text="4",Value="4" },
+                  new SelectListItem{Text="5",Value="5" },
+                     new SelectListItem{Text="6",Value="6" },
+                        new SelectListItem{Text="7",Value="7" },
+                           new SelectListItem{Text="8",Value="8" },
+
+         })
+                @*@Html.EditorFor(model => model.curr_sem, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.curr_sem, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

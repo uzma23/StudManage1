@@ -1,0 +1,217 @@
+﻿@model StudManage1.Models.eduDetail
+
+@{
+    ViewBag.Title = "Studentdeet";
+}
+<style>
+    dl {
+        margin-bottom: 50px;
+    }
+
+        dl dt {
+            background: #5f9be3;
+            color: #fff;
+            float: left;
+            font-weight: bold;
+            margin-right: 10px;
+            padding: 5px;
+            width: 100px;
+        }
+
+        dl dd {
+            margin: 2px 0;
+            padding: 5px 0;
+            
+        }
+    div.w3-row {
+        display: flex;
+    }
+
+    div.w3-col {
+        margin: 20px;
+        
+    }
+    /*#left {
+        float: left;
+        width: 65%;
+        overflow: hidden;
+    }
+
+    #right {
+        overflow: hidden;
+    }*/
+</style>
+
+
+<h2>Student Details</h2>
+<hr />
+<div class="w3-row">
+    <div id="left" class="w3-col">
+
+
+        <dl class="dl-horizontal">
+            <dt>
+                @*@Html.DisplayNameFor(model => model.stuDetail.rollNo)*@
+                ROLL NUMBER:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.stuDetail.rollNo)
+            </dd>
+
+            <dt>
+                @*@Html.DisplayNameFor(model => model.stuDetail.name)*@
+                NAME:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.stuDetail.name)
+            </dd>
+            <dt>
+                Date Of Birth:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.stuDetail.DOB)
+            </dd>
+            <dt>
+                Age:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.stuDetail.age)
+            </dd>
+
+            <dt>
+                Address:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.stuDetail.address)
+            </dd>
+
+            <dt>
+                Phone Number
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.stuDetail.phoneNo)
+            </dd>
+
+
+
+            <dt>
+                Gender:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.stuDetail.gender)
+            </dd>
+
+            <dt>
+                City:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.stuDetail.city)
+            </dd>
+            <dt>
+                Branch
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.stuDetail.branch.b_name)
+            </dd>
+
+            <dt>
+                Placed In
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.stuDetail.company.cname)
+            </dd>
+
+
+        </dl>
+    </div>
+    <div id="right" class="w3-col">
+        <dl class="dl-horizontal">
+            <dt>
+                @*@Html.DisplayNameFor(model => model.ten_percent)*@
+                Percentage achieved in 10th:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ten_percent)%
+            </dd>
+
+            <dt>
+                Year of Passing 10th:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ten_yop)
+            </dd>
+
+            <dt>
+                Attended 10th at Institution:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ten_inst)
+            </dd>
+
+            <dt>
+                Percentage achieved in 12th:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.twel_percent)%
+            </dd>
+
+            <dt>
+                Year of Passing 12th
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.twel_yop)
+            </dd>
+
+            <dt>
+                Attended 10th at Institution:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.twel_inst)
+            </dd>
+            <dt>
+                Current Semester:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.curr_sem)
+            </dd>
+
+            <dt>
+                Present CGPA:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.curr_CGPA)
+            </dd>
+
+
+            
+
+            @*<dt>
+            GRADE
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stuDetail.results)
+        </dd>*@
+        </dl>
+
+    </div>
+</div>
+<a href="~/Branch/Branches">Go Back to list</a>

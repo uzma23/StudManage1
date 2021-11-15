@@ -1,0 +1,87 @@
+﻿@model IEnumerable<StudManage1.Models.branch>
+@using StudManage1.Models
+
+@{ ViewBag.Title = "Branches"; }
+
+
+<h2>BRANCHES</h2>
+
+<style>
+    div.w3-col {
+        display: flex;
+        padding: 25px;
+        text-align: center;
+        align-content: center
+    }
+
+    div.w3-container {
+        background-color: white;
+        /*border-radius: 20px;*/
+    }
+
+    img {
+        width: 200px;
+        height: 100px;
+        align-content: center
+    }
+
+    a.option {
+        border: 0px hidden gray;
+        /*border-style: groove;*/
+        margin: 10px;
+        transition: transform .2s;
+        color: blue;
+        position: center;
+        padding-bottom: 0px;
+        align-content: center;
+    }
+
+    a:hover {
+        transform: scale(1.3);
+    }
+</style>
+
+
+<div class="w3-col l3 s6">
+    <a class="option" href="~/Branch/Students?branchid=1">
+        <div class="w3-container">
+            <img src="https://careerswithstem.com.au/wp-content/uploads/2021/01/Should-I-study-computer-science.jpg">
+            <p><b>Computer Science</b></p>
+        </div>
+    </a>
+    <a class="option" href="~/Branch/Students?branchid=2">
+        <div class="w3-container">
+            <img src="https://images.shiksha.com/mediadata/images/articles/1565948235phpyxD4ZK.jpeg">
+            <p><b>Information Science</b></p>
+        </div>
+    </a>
+    <a class="option" href="~/Branch/Students?branchid=3">
+        <div class="w3-container">
+            <img src="https://chennai.vit.ac.in/wp-content/uploads/2021/09/What-is-Electronics-Engineering-Difference-Between-Electrical-and-Electronics-Engineering.jpg">
+            <p><b>Electronics</b></p>
+        </div>
+    </a>
+    <a class="option" href="~/Branch/Students?branchid=4">
+        <div class="w3-container">
+            <img src="https://www.avit.ac.in/img/mech1.jpg">
+            <p><b>Mechanical</b></p>
+        </div>
+    </a>
+    <a class="option" href="~/Branch/Students?branchid=5">
+        <div class="w3-container">
+            <img src="https://www.accurate.in/engg/img/page/civil-engineering-branch.jpg">
+            <p><b>Civil</b></p>
+        </div>
+    </a>
+</div>
+
+
+
+
+
+
+
+
+
+
+

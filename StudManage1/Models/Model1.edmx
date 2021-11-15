@@ -1,0 +1,519 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="StudentManagement1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="branch">
+          <Key>
+            <PropertyRef Name="bid" />
+          </Key>
+          <Property Name="bid" Type="int" Nullable="false" />
+          <Property Name="b_name" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="company">
+          <Key>
+            <PropertyRef Name="cid" />
+          </Key>
+          <Property Name="cid" Type="int" Nullable="false" />
+          <Property Name="cname" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="eduDetails">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" />
+          <Property Name="ten_percent" Type="nvarchar" MaxLength="5" />
+          <Property Name="ten_yop" Type="int" />
+          <Property Name="ten_inst" Type="nvarchar" MaxLength="25" />
+          <Property Name="twel_percent" Type="nvarchar" MaxLength="5" />
+          <Property Name="twel_yop" Type="int" />
+          <Property Name="twel_inst" Type="nvarchar" MaxLength="25" />
+          <Property Name="curr_CGPA" Type="nvarchar" MaxLength="5" />
+          <Property Name="curr_sem" Type="int" />
+        </EntityType>
+        <EntityType Name="result">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" />
+          <Property Name="m1" Type="int" />
+          <Property Name="m2" Type="int" />
+          <Property Name="m3" Type="int" />
+          <Property Name="total" Type="int" />
+          <Property Name="grade" Type="nvarchar" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="roll">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="roles" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="signup">
+          <Key>
+            <PropertyRef Name="signid" />
+          </Key>
+          <Property Name="signid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="25" />
+          <Property Name="username" Type="nvarchar" MaxLength="25" />
+          <Property Name="pword" Type="nvarchar" MaxLength="25" />
+          <Property Name="cpword" Type="nvarchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="stuDetails">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="branchId" Type="int" />
+          <Property Name="rollNo" Type="nvarchar" MaxLength="10" />
+          <Property Name="name" Type="nvarchar" MaxLength="30" />
+          <Property Name="age" Type="int" />
+          <Property Name="address" Type="nvarchar" MaxLength="50" />
+          <Property Name="phoneNo" Type="nvarchar" MaxLength="10" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="gender" Type="nvarchar" MaxLength="6" />
+          <Property Name="city" Type="nvarchar" MaxLength="15" />
+          <Property Name="cid" Type="int" />
+        </EntityType>
+        <EntityType Name="userrollmap">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rid" Type="int" />
+          <Property Name="signupid" Type="int" />
+        </EntityType>
+        <Association Name="FK__eduDetails__id__286302EC">
+          <End Role="stuDetails" Type="Self.stuDetails" Multiplicity="0..1" />
+          <End Role="eduDetails" Type="Self.eduDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stuDetails">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="eduDetails">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__result__id__398D8EEE">
+          <End Role="stuDetails" Type="Self.stuDetails" Multiplicity="0..1" />
+          <End Role="result" Type="Self.result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stuDetails">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="result">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__stuDetail__branc__2B3F6F97">
+          <End Role="branch" Type="Self.branch" Multiplicity="0..1" />
+          <End Role="stuDetails" Type="Self.stuDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="branch">
+              <PropertyRef Name="bid" />
+            </Principal>
+            <Dependent Role="stuDetails">
+              <PropertyRef Name="branchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__stuDetails__cid__2E1BDC42">
+          <End Role="company" Type="Self.company" Multiplicity="0..1" />
+          <End Role="stuDetails" Type="Self.stuDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="cid" />
+            </Principal>
+            <Dependent Role="stuDetails">
+              <PropertyRef Name="cid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__userrollm__signu__36B12243">
+          <End Role="signup" Type="Self.signup" Multiplicity="0..1" />
+          <End Role="userrollmap" Type="Self.userrollmap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="signup">
+              <PropertyRef Name="signid" />
+            </Principal>
+            <Dependent Role="userrollmap">
+              <PropertyRef Name="signupid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__userrollmap__rid__35BCFE0A">
+          <End Role="roll" Type="Self.roll" Multiplicity="0..1" />
+          <End Role="userrollmap" Type="Self.userrollmap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roll">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="userrollmap">
+              <PropertyRef Name="rid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StudentManagement1ModelStoreContainer">
+          <EntitySet Name="branch" EntityType="Self.branch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="company" EntityType="Self.company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eduDetails" EntityType="Self.eduDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="result" EntityType="Self.result" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="roll" EntityType="Self.roll" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="signup" EntityType="Self.signup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="stuDetails" EntityType="Self.stuDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userrollmap" EntityType="Self.userrollmap" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__eduDetails__id__286302EC" Association="Self.FK__eduDetails__id__286302EC">
+            <End Role="stuDetails" EntitySet="stuDetails" />
+            <End Role="eduDetails" EntitySet="eduDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__result__id__398D8EEE" Association="Self.FK__result__id__398D8EEE">
+            <End Role="stuDetails" EntitySet="stuDetails" />
+            <End Role="result" EntitySet="result" />
+          </AssociationSet>
+          <AssociationSet Name="FK__stuDetail__branc__2B3F6F97" Association="Self.FK__stuDetail__branc__2B3F6F97">
+            <End Role="branch" EntitySet="branch" />
+            <End Role="stuDetails" EntitySet="stuDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__stuDetails__cid__2E1BDC42" Association="Self.FK__stuDetails__cid__2E1BDC42">
+            <End Role="company" EntitySet="company" />
+            <End Role="stuDetails" EntitySet="stuDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__userrollm__signu__36B12243" Association="Self.FK__userrollm__signu__36B12243">
+            <End Role="signup" EntitySet="signup" />
+            <End Role="userrollmap" EntitySet="userrollmap" />
+          </AssociationSet>
+          <AssociationSet Name="FK__userrollmap__rid__35BCFE0A" Association="Self.FK__userrollmap__rid__35BCFE0A">
+            <End Role="roll" EntitySet="roll" />
+            <End Role="userrollmap" EntitySet="userrollmap" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StudentManagement1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="branch">
+          <Key>
+            <PropertyRef Name="bid" />
+          </Key>
+          <Property Name="bid" Type="Int32" Nullable="false" />
+          <Property Name="b_name" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="stuDetails" Relationship="Self.FK__stuDetail__branc__2B3F6F97" FromRole="branch" ToRole="stuDetails" />
+        </EntityType>
+        <EntityType Name="company">
+          <Key>
+            <PropertyRef Name="cid" />
+          </Key>
+          <Property Name="cid" Type="Int32" Nullable="false" />
+          <Property Name="cname" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="stuDetails" Relationship="Self.FK__stuDetails__cid__2E1BDC42" FromRole="company" ToRole="stuDetails" />
+        </EntityType>
+        <EntityType Name="eduDetail">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" />
+          <Property Name="ten_percent" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="ten_yop" Type="Int32" />
+          <Property Name="ten_inst" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="twel_percent" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="twel_yop" Type="Int32" />
+          <Property Name="twel_inst" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="curr_CGPA" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="curr_sem" Type="Int32" />
+          <NavigationProperty Name="stuDetail" Relationship="Self.FK__eduDetails__id__286302EC" FromRole="eduDetails" ToRole="stuDetails" />
+        </EntityType>
+        <EntityType Name="result">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" />
+          <Property Name="m1" Type="Int32" />
+          <Property Name="m2" Type="Int32" />
+          <Property Name="m3" Type="Int32" />
+          <Property Name="total" Type="Int32" />
+          <Property Name="grade" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="stuDetail" Relationship="Self.FK__result__id__30F848ED" FromRole="result" ToRole="stuDetails" />
+        </EntityType>
+        <EntityType Name="roll">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="roles" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="userrollmaps" Relationship="Self.FK__userrollmap__rid__35BCFE0A" FromRole="roll" ToRole="userrollmap" />
+        </EntityType>
+        <EntityType Name="signup">
+          <Key>
+            <PropertyRef Name="signid" />
+          </Key>
+          <Property Name="signid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="pword" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="cpword" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="userrollmaps" Relationship="Self.FK__userrollm__signu__36B12243" FromRole="signup" ToRole="userrollmap" />
+        </EntityType>
+        <EntityType Name="stuDetail">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="branchId" Type="Int32" />
+          <Property Name="rollNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="age" Type="Int32" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phoneNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="gender" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="cid" Type="Int32" />
+          <NavigationProperty Name="branch" Relationship="Self.FK__stuDetail__branc__2B3F6F97" FromRole="stuDetails" ToRole="branch" />
+          <NavigationProperty Name="company" Relationship="Self.FK__stuDetails__cid__2E1BDC42" FromRole="stuDetails" ToRole="company" />
+          <NavigationProperty Name="eduDetails" Relationship="Self.FK__eduDetails__id__286302EC" FromRole="stuDetails" ToRole="eduDetails" />
+          <NavigationProperty Name="results" Relationship="Self.FK__result__id__30F848ED" FromRole="stuDetails" ToRole="result" />
+        </EntityType>
+        <EntityType Name="userrollmap">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rid" Type="Int32" />
+          <Property Name="signupid" Type="Int32" />
+          <NavigationProperty Name="roll" Relationship="Self.FK__userrollmap__rid__35BCFE0A" FromRole="userrollmap" ToRole="roll" />
+          <NavigationProperty Name="signup" Relationship="Self.FK__userrollm__signu__36B12243" FromRole="userrollmap" ToRole="signup" />
+        </EntityType>
+        <Association Name="FK__stuDetail__branc__2B3F6F97">
+          <End Role="branch" Type="Self.branch" Multiplicity="0..1" />
+          <End Role="stuDetails" Type="Self.stuDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="branch">
+              <PropertyRef Name="bid" />
+            </Principal>
+            <Dependent Role="stuDetails">
+              <PropertyRef Name="branchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__stuDetails__cid__2E1BDC42">
+          <End Role="company" Type="Self.company" Multiplicity="0..1" />
+          <End Role="stuDetails" Type="Self.stuDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="cid" />
+            </Principal>
+            <Dependent Role="stuDetails">
+              <PropertyRef Name="cid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__eduDetails__id__286302EC">
+          <End Role="stuDetails" Type="Self.stuDetail" Multiplicity="0..1" />
+          <End Role="eduDetails" Type="Self.eduDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stuDetails">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="eduDetails">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__result__id__30F848ED">
+          <End Role="stuDetails" Type="Self.stuDetail" Multiplicity="0..1" />
+          <End Role="result" Type="Self.result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stuDetails">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="result">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__userrollmap__rid__35BCFE0A">
+          <End Role="roll" Type="Self.roll" Multiplicity="0..1" />
+          <End Role="userrollmap" Type="Self.userrollmap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roll">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="userrollmap">
+              <PropertyRef Name="rid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__userrollm__signu__36B12243">
+          <End Role="signup" Type="Self.signup" Multiplicity="0..1" />
+          <End Role="userrollmap" Type="Self.userrollmap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="signup">
+              <PropertyRef Name="signid" />
+            </Principal>
+            <Dependent Role="userrollmap">
+              <PropertyRef Name="signupid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StudentManagement1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="branches" EntityType="Self.branch" />
+          <EntitySet Name="companies" EntityType="Self.company" />
+          <EntitySet Name="eduDetails" EntityType="Self.eduDetail" />
+          <EntitySet Name="results" EntityType="Self.result" />
+          <EntitySet Name="rolls" EntityType="Self.roll" />
+          <EntitySet Name="signups" EntityType="Self.signup" />
+          <EntitySet Name="stuDetails" EntityType="Self.stuDetail" />
+          <EntitySet Name="userrollmaps" EntityType="Self.userrollmap" />
+          <AssociationSet Name="FK__stuDetail__branc__2B3F6F97" Association="Self.FK__stuDetail__branc__2B3F6F97">
+            <End Role="branch" EntitySet="branches" />
+            <End Role="stuDetails" EntitySet="stuDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__stuDetails__cid__2E1BDC42" Association="Self.FK__stuDetails__cid__2E1BDC42">
+            <End Role="company" EntitySet="companies" />
+            <End Role="stuDetails" EntitySet="stuDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__eduDetails__id__286302EC" Association="Self.FK__eduDetails__id__286302EC">
+            <End Role="stuDetails" EntitySet="stuDetails" />
+            <End Role="eduDetails" EntitySet="eduDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__result__id__30F848ED" Association="Self.FK__result__id__30F848ED">
+            <End Role="stuDetails" EntitySet="stuDetails" />
+            <End Role="result" EntitySet="results" />
+          </AssociationSet>
+          <AssociationSet Name="FK__userrollmap__rid__35BCFE0A" Association="Self.FK__userrollmap__rid__35BCFE0A">
+            <End Role="roll" EntitySet="rolls" />
+            <End Role="userrollmap" EntitySet="userrollmaps" />
+          </AssociationSet>
+          <AssociationSet Name="FK__userrollm__signu__36B12243" Association="Self.FK__userrollm__signu__36B12243">
+            <End Role="signup" EntitySet="signups" />
+            <End Role="userrollmap" EntitySet="userrollmaps" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StudentManagement1ModelStoreContainer" CdmEntityContainer="StudentManagement1Entities">
+          <EntitySetMapping Name="branches">
+            <EntityTypeMapping TypeName="StudentManagement1Model.branch">
+              <MappingFragment StoreEntitySet="branch">
+                <ScalarProperty Name="bid" ColumnName="bid" />
+                <ScalarProperty Name="b_name" ColumnName="b_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="companies">
+            <EntityTypeMapping TypeName="StudentManagement1Model.company">
+              <MappingFragment StoreEntitySet="company">
+                <ScalarProperty Name="cid" ColumnName="cid" />
+                <ScalarProperty Name="cname" ColumnName="cname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eduDetails">
+            <EntityTypeMapping TypeName="StudentManagement1Model.eduDetail">
+              <MappingFragment StoreEntitySet="eduDetails">
+                <ScalarProperty Name="sid" ColumnName="sid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ten_percent" ColumnName="ten_percent" />
+                <ScalarProperty Name="ten_yop" ColumnName="ten_yop" />
+                <ScalarProperty Name="ten_inst" ColumnName="ten_inst" />
+                <ScalarProperty Name="twel_percent" ColumnName="twel_percent" />
+                <ScalarProperty Name="twel_yop" ColumnName="twel_yop" />
+                <ScalarProperty Name="twel_inst" ColumnName="twel_inst" />
+                <ScalarProperty Name="curr_CGPA" ColumnName="curr_CGPA" />
+                <ScalarProperty Name="curr_sem" ColumnName="curr_sem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="results">
+            <EntityTypeMapping TypeName="StudentManagement1Model.result">
+              <MappingFragment StoreEntitySet="result">
+                <ScalarProperty Name="sid" ColumnName="sid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="m1" ColumnName="m1" />
+                <ScalarProperty Name="m2" ColumnName="m2" />
+                <ScalarProperty Name="m3" ColumnName="m3" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="grade" ColumnName="grade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rolls">
+            <EntityTypeMapping TypeName="StudentManagement1Model.roll">
+              <MappingFragment StoreEntitySet="roll">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="roles" ColumnName="roles" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="signups">
+            <EntityTypeMapping TypeName="StudentManagement1Model.signup">
+              <MappingFragment StoreEntitySet="signup">
+                <ScalarProperty Name="signid" ColumnName="signid" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="pword" ColumnName="pword" />
+                <ScalarProperty Name="cpword" ColumnName="cpword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stuDetails">
+            <EntityTypeMapping TypeName="StudentManagement1Model.stuDetail">
+              <MappingFragment StoreEntitySet="stuDetails">
+                <ScalarProperty Name="sid" ColumnName="sid" />
+                <ScalarProperty Name="branchId" ColumnName="branchId" />
+                <ScalarProperty Name="rollNo" ColumnName="rollNo" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phoneNo" ColumnName="phoneNo" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="cid" ColumnName="cid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userrollmaps">
+            <EntityTypeMapping TypeName="StudentManagement1Model.userrollmap">
+              <MappingFragment StoreEntitySet="userrollmap">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="rid" ColumnName="rid" />
+                <ScalarProperty Name="signupid" ColumnName="signupid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

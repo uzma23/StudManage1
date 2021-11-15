@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "Album";
+}
+
+<style>
+    img {
+        width: 1200px;
+        height: 500px;
+    }
+</style>
+
+<h2>GALLERY </h2>
+<div class="w3-content w3-display-container">
+
+    <div class="w3-display-container mySlides">
+        <img src="https://media.cntraveler.com/photos/56953a3965492c403b26f6f0/master/pass/ucla-cr-alamy.jpg" />
+        <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
+            <strong>COLLEGE CAMPUS</strong>
+        </div>
+    </div>
+
+    <div class="w3-display-container mySlides">
+        <img src="https://th.bing.com/th/id/R.108316ddf527753130431e74b561813c?rik=jU0BdqVb9VMv9A&riu=http%3a%2f%2fwww.classpictures.co.uk%2fimages%2fgalleries%2fleavers%2fleavers-group-photo.jpg&ehk=CZpg9zOJp4WQzVL95TLjZjocH8EtBx7mKnErb4SJ1qA%3d&risl=&pid=ImgRaw&r=0" />
+        <div class="w3-display-bottomright w3-large w3-container w3-padding-16 w3-black">
+            <strong>Batch 2021</strong>
+        </div>
+    </div>
+
+    <div class="w3-display-container mySlides">
+        <img src="https://th.bing.com/th/id/R.99b9a66a5ef297e881e63a7f754c8fb8?rik=wbGYid%2bQ5%2fi8%2bg&riu=http%3a%2f%2facc.edu.in%2fwp-content%2fuploads%2f2018%2f04%2flibrary.jpg&ehk=jNtAE1bmi4IHssMy2MRLiG23wcQZBZ33OW%2bHoxsVQf0%3d&risl=&pid=ImgRaw&r=0" />
+        <div class="w3-display-topleft w3-large w3-container w3-padding-16 w3-black">
+            <strong>College Library</strong>
+        </div>
+    </div>
+
+    <div class="w3-display-container mySlides">
+        <img src="https://th.bing.com/th/id/R.73f1030694af1b2470f55af5e6f982b8?rik=x82eMD4V%2f1dN9w&riu=http%3a%2f%2fdefendernetwork.com%2fwp-content%2fuploads%2f2017%2f03%2fmaxresdefault-21.jpg&ehk=4hwH6aUD14vfeIisEiwb8IKTnMbWiSN%2blavNIBY5S2o%3d&risl=&pid=ImgRaw&r=0" />
+        <div class="w3-display-topright w3-large w3-container w3-padding-16 w3-black">
+            <strong>Research Lab</strong>
+        </div>
+    </div>
+
+
+
+    <button onclick="plusDivs(-1)">&laquo;</button>
+    <button onclick="plusDivs(1)">&raquo;</button>
+
+</div>
+<script>
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+        showDivs(slideIndex += n);
+    }
+
+    function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        if (n > x.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = x.length }
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        x[slideIndex - 1].style.display = "block";
+    }
+</script>
+@Html.ActionLink("BACK TO MENU", "menu", "HomePage1");
+
+

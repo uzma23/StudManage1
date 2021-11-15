@@ -1,0 +1,85 @@
+﻿@model PagedList.IPagedList<StudManage1.Models.stuDetail>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+<!--Table with bootstrap class .table and .table-condensed-->
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>@Html.ActionLink("name", "Index", new { sortOrder = ViewBag.NameSortParm })</th>
+
+            <th>DOB</th>
+            <th>age</th>
+            <th>address</th>
+            <th>mobileno</th>
+            <th>city</th>
+            <th>gender</th>
+            <th>Branch</th>
+            <th>Company Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--Loop through each customer to show it's data-->
+        @foreach (var Customer in Model)
+        {
+            <tr>
+                <td>@Customer.name</td>
+                <td>@Customer.DOB</td>
+                <td>@Customer.age</td>
+                <td>@Customer.address</td>
+                <td>@Customer.phoneNo</td>
+                <td>@Customer.city</td>
+                <td>@Customer.gender</td>
+                <td>@Customer.branch.b_name</td>
+                <td>@Customer.company.cname</td>
+                <td>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @Html.ActionLink("Details", "Details", new { id = Customer.sid });
+                        if (User.IsInRole("Admin") || User.IsInRole("PO"))
+                        {
+                            @Html.ActionLink("Edit", "Edit", new { id = Customer.sid });
+                        }
+
+                        if (User.IsInRole("Admin"))
+                        {
+                            @Html.ActionLink("Delete", "Delete", new { id = Customer.sid });
+                        }
+                    }
+                </td>
+
+            </tr>
+
+        }
+
+
+
+
+    </tbody>
+</table>
+
+
+
+<br />
+<!--Code to show curent page and page number-->
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+
